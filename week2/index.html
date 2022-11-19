@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css" />
+    <title>App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="popular-citites block-border">
+      <button type="button" class="popular-citites-item">Kyiv</button>
+      <button type="button" class="popular-citites-item">Lviv</button>
+      <button type="button" class="popular-citites-item">Odesa</button>
+    </div>
+
+    <form action="#" class="search-form block-border" id="search-form">
+      <input
+        type="text"
+        placeholder="Search"
+        class="search-input"
+        id="search-input"
+        autofocus
+      />
+      <button type="button" class="search-form-btn">Search</button>
+      <button type="button" class="search-form-btn">Current</button>
+    </form>
+    <h1>Zhytomyr</h1>
+    <div class="current-weather">
+      <div class="weather-icon"></div>
+      <div class="weather-text">
+        <p class="weather-paragraph" id="date-time"></p>
+        <p class="weather-paragraph">
+          <span id="current-degrees">11</span
+          ><a href="#" id="celsius" class="celsius active">&#8451;</a> /
+          <a href="#" id="fahrenheit" class="fahrenheit">&#x2109;</a>
+        </p>
+        <p class="weather-paragraph">
+          Chance of precipitation: <span class="precipitation-amount">1</span>%
+        </p>
+        <p class="weather-paragraph">Humidity: <span>57</span>%</p>
+        <p class="weather-paragraph">Wind: <span>11</span> km/h</p>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <h6 class="card-day">Saturday</h6>
+        <div class="card-icon card-icon-1"></div>
+        <p class="card-weather">14°</p>
+      </div>
+      <div class="card">
+        <h6 class="card-day">Sunday</h6>
+        <div class="card-icon card-icon-2"></div>
+        <p class="card-weather">13°</p>
+      </div>
+      <div class="card">
+        <h6 class="card-day">Monday</h6>
+        <div class="card-icon card-icon-3"></div>
+        <p class="card-weather">17°</p>
+      </div>
+      <div class="card">
+        <h6 class="card-day">Tuesday</h6>
+        <div class="card-icon card-icon-4"></div>
+        <p class="card-weather">20°</p>
+      </div>
+      <div class="card">
+        <h6 class="card-day">Wednesday</h6>
+        <div class="card-icon card-icon-5"></div>
+        <p class="card-weather">13°</p>
+      </div>
+    </div>
+    <script src="./src/index.js"></script>
+  </body>
+</html>
