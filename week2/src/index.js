@@ -1,33 +1,29 @@
-const dateTime = document.querySelector("#date-time");
-let date = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thirsday",
-  "Friday",
-  "Saturday",
-];
-let hoursStr = date.getHours() + "";
-let hours = hoursStr.length > 1 ? hoursStr : `0${hoursStr}`;
-let minutesStr = "" + date.getMinutes();
-
-let minutes = minutesStr.length > 1 ? minutesStr : `0${minutesStr}`;
-dateTime.innerHTML = `${days[date.getDay()]} ${hours}:${minutes}`;
-
-let searchBtn = document.querySelector("#search-btn");
-
-// maybe i'll change this
-function changeMinutes() {
-  setInterval(function () {
-    let date = new Date();
-    let minutesStr = "" + date.getMinutes();
-    let minutes = minutesStr.length > 1 ? minutesStr : `0${minutesStr}`;
-    dateTime.innerHTML = `${days[date.getDay()]} ${hours}:${minutes}`;
-  }, 60000);
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thirsday",
+    "Friday",
+    "Saturday",
+  ];
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
 }
-changeMinutes();
+const searchBtn = document.querySelector("#search-btn");
+const kyiv = document.querySelector("#kyiv");
+const lviv = document.querySelector("#lviv");
+const odessa = document.querySelector("#odessa");
 
 let h1 = document.querySelector("h1");
 let units = "metric";
@@ -65,12 +61,17 @@ linkFahrenheit.addEventListener("click", (event) => {
 });
 // Search engine
 function showTemperature(response) {
-  let humidityPar = document.querySelector("#humidity");
-  let windPar = document.querySelector("#wind");
+  const humidityPar = document.querySelector("#humidity");
+  const windPar = document.querySelector("#wind");
+  const dateTime = document.querySelector("#date-time");
+  const weatherDescription = document.querySelector("#weather-description");
   let temperature = Math.round(response.data.main.temp);
   curDegrees.innerHTML = temperature;
   humidityPar.innerHTML = response.data.main.humidity;
-  windPar.innerHTML = response.data.wind.speed;
+  windPar.innerHTML = Math.round(response.data.wind.speed);
+  dateTime.innerHTML = formatDate(response.data.dt * 1000);
+  weatherDescription.innerHTML = response.data.weather[0].main;
+  console.log(response.data);
 }
 let apikey = "88724523008dc9e1be18f6eb6a959b67";
 let city = h1.innerHTML;
@@ -95,3 +96,21 @@ searchForm.addEventListener("submit", (event) => {
   getCityWeather();
 });
 searchBtn.addEventListener("click", () => getCityWeather());
+kyiv.addEventListener("click", () => {
+  city = kyiv.innerHTML;
+  h1.innerHTML = city;
+  url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=${units}`;
+  axios.get(url).then(showTemperature);
+});
+lviv.addEventListener("click", () => {
+  city = lviv.innerHTML;
+  h1.innerHTML = city;
+  url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=${units}`;
+  axios.get(url).then(showTemperature);
+});
+odessa.addEventListener("click", () => {
+  city = odessa.innerHTML;
+  h1.innerHTML = city;
+  url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=${units}`;
+  axios.get(url).then(showTemperature);
+});
