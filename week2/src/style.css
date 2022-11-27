@@ -148,4 +148,5 @@ h1 {
 }
 .active {
   color: rgb(130, 130, 198);
+  cursor: default;
 }
