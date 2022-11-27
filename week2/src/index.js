@@ -65,12 +65,18 @@ function showTemperature(response) {
   const windPar = document.querySelector("#wind");
   const dateTime = document.querySelector("#date-time");
   const weatherDescription = document.querySelector("#weather-description");
+  const icon = document.querySelector("#weather-icon");
   let temperature = Math.round(response.data.main.temp);
   curDegrees.innerHTML = temperature;
   humidityPar.innerHTML = response.data.main.humidity;
   windPar.innerHTML = Math.round(response.data.wind.speed);
   dateTime.innerHTML = formatDate(response.data.dt * 1000);
   weatherDescription.innerHTML = response.data.weather[0].main;
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", response.data.weather[0].description);
   console.log(response.data);
 }
 let apikey = "88724523008dc9e1be18f6eb6a959b67";
