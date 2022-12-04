@@ -14,13 +14,13 @@ h1 {
   box-shadow: 0 0 3px 3px rgb(235, 253, 223);
   margin-bottom: 50px;
 }
-.popular-citites {
+.popular-cities {
   display: flex;
   justify-content: center;
   align-content: center;
   column-gap: 30px;
 }
-.popular-citites-item {
+.popular-cities-item {
   width: 20%;
   height: 40px;
   border: 1px solid rgb(130, 130, 198);
@@ -31,7 +31,7 @@ h1 {
   transition: all 150ms ease-in-out;
   cursor: pointer;
 }
-.popular-citites-item:hover {
+.popular-cities-item:hover {
   background: rgb(235, 253, 223);
   box-shadow: 0 0 3px 1px rgb(130, 130, 198);
   font-size: 22px;
@@ -81,8 +81,6 @@ h1 {
   display: block;
   width: 150px;
   height: 150px;
-  /*background: no-repeat url("../img/clear_day_FILL0_wght400_GRAD0_opsz48.svg");
-  background-size: cover;*/
   filter: invert(55%) sepia(29%) saturate(630%) hue-rotate(202deg)
     brightness(91%) contrast(86%);
 }
@@ -126,6 +124,7 @@ h1 {
   filter: invert(55%) sepia(29%) saturate(630%) hue-rotate(202deg)
     brightness(91%) contrast(86%);
 }
+/*
 .card-icon-1,
 .card-icon-2 {
   background: no-repeat url("../img/clear_day_FILL0_wght400_GRAD0_opsz48.svg");
@@ -139,7 +138,7 @@ h1 {
 .card-icon-5 {
   background: no-repeat url("../img/rainy_FILL0_wght400_GRAD0_opsz48.svg");
   background-size: contain;
-}
+}*/
 
 .celsius,
 .fahrenheit {
