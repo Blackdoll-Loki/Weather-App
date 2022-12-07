@@ -104,7 +104,7 @@ function getCityWeather() {
 }
 function showPosition(position) {
   h1.innerHTML = `Your latitude is ${position.coords.latitude} and your longitude is ${position.coords.longitude}`;
-  let url = `https://api.shecodes.io/weather/v1/current?lat=${position.coords.latitude}&lon=${position.coords.longitude}&key=be31ee9ff95t7734bo02a1e16b490b16&units=metric`;
+  let url = `https://api.shecodes.io/weather/v1/current?lat=${position.coords.latitude}&lon=${position.coords.longitude}&key=${apiKey}&units=metric`;
   axios.get(url).then((response) => {
     showTemperature(response);
   });
