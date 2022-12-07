@@ -146,17 +146,18 @@ h1 {
   }
   .popular-cities-item {
     width: 30%;
-    font-size: 16px;
+    font-size: 14px;
   }
   .popular-cities-item:hover {
-    font-size: 17px;
+    font-size: 15px;
   }
   .search-input,
   .search-form-btn {
     width: 30%;
+    font-size: 14px;
   }
   .search-form-btn:hover {
-    font-size: 17px;
+    font-size: 15px;
   }
   .cards {
     flex-wrap: wrap;
