@@ -64,12 +64,8 @@ function convertToFahrenheit() {
   let celsius = Math.round((9 / 5) * +curDegrees.innerHTML + 32);
   return celsius;
 }
-// Search engine
 function getForecast(coordinates) {
-  //console.log(coordinates);
   let apiURL = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=${apiKey}&units=metric`;
-  //console.log(apiURL);
-
   axios.get(apiURL).then(displayForecast);
 }
 
@@ -89,10 +85,10 @@ function showTemperature(response) {
   weatherDescription.innerHTML = response.data.condition.description;
   icon.setAttribute("src", `${response.data.condition.icon_url}`);
   icon.setAttribute("alt", response.data.condition.description);
-  //console.log(response.data);
 
   getForecast(response.data.coordinates);
 }
+
 function getCityWeather() {
   let searchInput = document.querySelector("#search-input");
   if (searchInput.value !== "") {
@@ -106,6 +102,16 @@ function getCityWeather() {
     showTemperature(response);
   });
 }
+function showPosition(position) {
+  h1.innerHTML = `Your latitude is ${position.coords.latitude} and your longitude is ${position.coords.longitude}`;
+  let url = `https://api.shecodes.io/weather/v1/current?lat=${position.coords.latitude}&lon=${position.coords.longitude}&key=be31ee9ff95t7734bo02a1e16b490b16&units=metric`;
+  axios.get(url).then((response) => {
+    showTemperature(response);
+  });
+}
+function getCurrentPosition() {
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
 
 const searchBtn = document.querySelector("#search-btn");
 const kyiv = document.querySelector("#kyiv");
@@ -118,7 +124,7 @@ let searchForm = document.querySelector("#search-form");
 let city = h1.innerHTML;
 let apiKey = `be31ee9ff95t7734bo02a1e16b490b16`;
 let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
-
+const currentBtn = document.querySelector("#current");
 //Celsius to fahrenheit
 let linkCelsius = document.querySelector("#celsius");
 let linkFahrenheit = document.querySelector("#fahrenheit");
@@ -170,3 +176,4 @@ odessa.addEventListener("click", () => {
   url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
   axios.get(url).then(showTemperature);
 });
+currentBtn.addEventListener("click", getCurrentPosition);
