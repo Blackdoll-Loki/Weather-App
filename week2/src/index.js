@@ -43,10 +43,10 @@ async function displayForecast(response) {
               <p class="max-min-temperatures">
                 <span class="card-weather-max">${Math.round(
                   day.temperature.maximum
-                )}</span>
+                )}&deg</span>
                 <span class="card-weather-min">${Math.round(
                   day.temperature.minimum
-                )}</span>
+                )}&deg</span>
               </p>
           </div>`;
       }
