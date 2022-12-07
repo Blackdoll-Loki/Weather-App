@@ -34,7 +34,7 @@ async function displayForecast(response) {
     let forecast = data.daily;
     console.log(forecast);
     forecast.forEach((day, idx) => {
-      if (idx < 5) {
+      if (idx > 0 && idx < 6) {
         forcastHTML =
           forcastHTML +
           `<div class="card" id="card">
