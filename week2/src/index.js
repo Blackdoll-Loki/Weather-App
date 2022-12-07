@@ -27,7 +27,8 @@ function formatDay(timestamp) {
 }
 
 async function displayForecast(response) {
-  let data = await response.data;
+  let res = await response;
+  let data = res.data;
   let forecastContainer = document.querySelector("#cards");
   let forcastHTML = `<div class="cards" id="cards">`;
   if (data.daily) {
